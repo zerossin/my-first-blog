@@ -9,8 +9,8 @@
     </div>
     {% endif %}
     <h1>{{ post.title }}</h1>
-    {% if post.image %}
-    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-image">
+    {% if post.image and post.image.name and post.image.name != 'intruder_image/default_error.png' %}
+    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-image" onerror="this.remove();">
     {% endif %}
     <p>{{ post.text|linebreaksbr }}</p>
     {% if user.is_authenticated %}

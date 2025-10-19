@@ -18,8 +18,8 @@
                 <div class="post is-clickable" data-href="{% url 'post_detail' pk=post.pk %}">
                     <div class="date">{{ post.published_date }}</div>
                     <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-                    {% if post.image %}
-                        <img src="{{ post.image.url }}" class="post-image" alt="{{ post.title }}">
+                    {% if post.image and post.image.name and post.image.name != 'intruder_image/default_error.png' %}
+                        <img src="{{ post.image.url }}" class="post-image" alt="{{ post.title }}" onerror="this.remove();">
                     {% endif %}
                     <p class="post-text">{{ post.text|linebreaksbr }}</p>
                 </div>
