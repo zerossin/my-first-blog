@@ -1,10 +1,23 @@
- h1 a {
- color: #FCA205;
- font-family: 'Lobster';
- }
+/* 헤더 제목은 Lobster 서체 유지 */
+.page-header h1 a {
+	color: #FCA205;
+	font-family: 'Lobster';
+}
+
+/* 본문 폰트: Suit (눈누) */
+@font-face {
+	font-family: 'Suit';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+	font-weight: normal;
+	font-display: swap;
+}
 
  body {
- padding-left: 0;
+  padding-left: 0;
+  font-family: 'Suit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* 옅은 회색-베이지 그라데이션 배경 */
+  background: linear-gradient(135deg, #f5f3ef 0%, #ece9e6 50%, #f2f0ec 100%);
+  background-attachment: fixed; /* 스크롤 시 고정 느낌 */
  }
 
  .page-header {
@@ -18,11 +31,10 @@
  text-decoration: none;
  }
  .content {
-  margin-left: 0; /* let Bootstrap container handle centering */
+	margin-left: 0; /* 중앙 정렬은 Bootstrap container에 맡김 */
  }
- h1, h2, h3, h4 {
- font-family: 'Lobster', cursive;
- }
+/* 헤더 제목을 제외한 모든 제목은 본문 폰트(Suit)를 상속 */
+/* h1~h4는 기본적으로 본문 폰트를 사용 */
  .date {
  color: #828282;
  }
@@ -43,6 +55,7 @@
  }
  .post h1 a, .post h1 a:visited {
  color: #000000;
+ font-weight: 600; /* 포스트 제목을 약간 두껍게 */
  }
  .intruder-image-list{
  object-fit: cover;
@@ -52,14 +65,22 @@
  max-width: 100%;
  }
 
-/* Subtle card border for each post */
+/* 이미지와 본문 텍스트 사이 간격 */
+.post .intruder-image-list {
+	margin: 12px 0; /* 제목과 본문 사이 모두 간격 */
+}
+
+/* 각 포스트 카드에 은은한 테두리 + 유리(글래스) 효과 */
 .post {
-	margin-bottom: 70px; /* keep existing spacing */
-	border: 1px solid #e9e9e9;
-	border-radius: 8px;
+	margin-bottom: 70px; /* 기존 여백 유지 */
+	border: 1px solid rgba(233, 233, 233, 0.6);
+	border-radius: 12px;
 	padding: 16px;
-	background: #fff;
-	overflow: hidden; /* keep images inside */
+	background: rgba(255, 255, 255, 0.6); /* 반투명 카드 배경 */
+	backdrop-filter: saturate(120%) blur(10px);
+	-webkit-backdrop-filter: saturate(120%) blur(10px); /* 사파리 반영 */
+	overflow: hidden; /* 이미지가 박스 밖으로 넘치지 않도록 */
+	box-shadow: 0 8px 24px rgba(0,0,0,0.06);
 }
 
 /* 컨테이너 화면 전체 사용 */
