@@ -17,9 +17,25 @@
 		}
 	}
 
+			function enableCardClick() {
+				var items = document.querySelectorAll('.post.is-clickable');
+			items.forEach(function(item) {
+				item.addEventListener('click', function(e) {
+					// 내부 a 태그 클릭은 기본 링크 동작 유지
+					if (e.target.closest('a')) return;
+					var href = item.getAttribute('data-href');
+					if (href) { window.location.href = href; }
+				});
+			});
+		}
+
 	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', initMasonry);
+			document.addEventListener('DOMContentLoaded', function(){
+				initMasonry();
+				enableCardClick();
+			});
 	} else {
-		initMasonry();
+			initMasonry();
+			enableCardClick();
 	}
 })();
