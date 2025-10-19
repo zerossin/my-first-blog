@@ -49,7 +49,7 @@ body {
 
 /* 포스트 카드: 여백/경계/배경/블러를 한 곳에서 관리 */
 .post {
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 	border: 1px solid rgba(233, 233, 233, 0.6);
 	border-radius: 12px;
 	padding: 16px;
@@ -76,20 +76,29 @@ body {
 /* 컨테이너 화면 전체 사용 (기존 동작 유지) */
 .content.container { width: 100% !important; }
 
-/* Masonry 레이아웃: 세로 길이가 다른 카드들을 빈틈 없이 아래로 붙여 배치 */
-.masonry {
-	column-count: 1;
-	column-gap: 24px;
+/* Masonry.js 기반 촘촘 레이아웃: 수평 순서를 최대한 유지 (horizontalOrder) */
+.masonry-grid {
+	margin: 0 auto;
 }
-.masonry-item {
-	break-inside: avoid;
-	-webkit-column-break-inside: avoid;
-	-moz-column-break-inside: avoid;
-	margin-bottom: 24px;
-}
+.masonry-grid-sizer,
+.masonry-grid-item { width: 100%; }
 @media (min-width: 768px) {
-	.masonry { column-count: 2; }
+	.masonry-grid-sizer,
+	.masonry-grid-item { width: 50%; }
 }
 @media (min-width: 1200px) {
-	.masonry { column-count: 3; }
+	.masonry-grid-sizer,
+	.masonry-grid-item { width: 33.2%; }
+}
+.masonry-grid-item { padding: 0 8px 24px; box-sizing: border-box; }
+
+/* 카드 이미지: 원본 비율 유지 */
+.post-image { object-fit: contain; height: auto; width: 100%; }
+
+.post-text {
+	display: -webkit-box;
+	line-clamp: 5;
+	-webkit-line-clamp: 5; /* 최대 5줄 표시 */
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
