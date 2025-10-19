@@ -64,6 +64,21 @@
 	width: 100%;
 	padding: 0 32px;
 }
+.header-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	background-color: #F5F3E7;
+	color: #222;
+	border: 1px solid #e5e2d9;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+	text-decoration: none;
+}
+.header-icon:hover { filter: brightness(0.98); text-decoration: none; }
+.header-icon.edit { color: inherit; }
 .header-flex h1 {
 	margin: 0 auto;
 	flex-grow: 1;
@@ -141,11 +156,24 @@ body {
 .save { float: right; }
 .post-form textarea, .post-form input { width: 100%; }
 .top-menu, .top-menu:hover, .top-menu:visited {
-	color: #ffffff;
-	float: right;
-	font-size: 26pt;
-	margin-right: 20px;
+	color: inherit;
+	text-decoration: none;
 }
+/* 헤더 우측 에디트 버튼은 고정 크기로 레이아웃 안정화 */
+.page-header .top-menu {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	margin: 0; /* hover 시 흔들림 방지 */
+}
+
+/* 헤더 아이콘 내부 글리프 크기/정렬 보정 및 색상 */
+.header-icon .glyphicon { font-size: 20px; line-height: 1; }
+/* 플러스 아이콘은 GitHub 아이콘과 동일 스타일(검은색) 상속 */
+.header-icon.edit { color: inherit; }
+.header-icon.edit:hover { color: inherit; }
 
 /* 포스트 카드: 여백/경계/배경/블러를 한 곳에서 관리 */
 .post {
