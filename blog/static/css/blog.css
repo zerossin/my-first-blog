@@ -1,3 +1,22 @@
+.header-flex {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding: 0 32px;
+}
+.header-flex h1 {
+	margin: 0 auto;
+	flex-grow: 1;
+	text-align: center;
+}
+.header-flex .top-menu {
+	font-size: 26pt;
+	margin: 0;
+	padding-left: 0;
+	position: relative;
+	top: 0;
+}
 /* 헤더 제목은 Lobster 서체 유지 (색상은 아래 공통 규칙에서 관리) */
 .page-header h1 a { font-family: 'Lobster'; }
 
@@ -22,15 +41,37 @@ body {
 	background-attachment: fixed; /* 스크롤 시 고정 느낌 */
 }
 
+
+/* 헤더: 상단 고정, 중앙정렬, 좌우 그라데이션(금색-흰색-하늘색-아이보리) */
 .page-header {
-	background-color: #ff9400;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1000;
 	margin-top: 0;
-	padding: 20px 20px 20px 40px;
+	padding: 24px 0 20px 0;
+	text-align: center;
+	background: linear-gradient(90deg, #e7cf46 0%, #FFFFFF 50%, #B2EBF2 100%);
+	box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+	border-bottom: 1px solid rgba(220,220,220,0.25);
 }
-.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
-	color: #ffffff;
+/* 에디트 버튼(연필) 아이보리 배경 */
+.btn-default {
+	background-color: #F5F3E7 !important;
+	border-color: #e5e2d9 !important;
+	color: #222 !important;
+}
+.page-header h1,
+.page-header h1 a,
+.page-header h1 a:visited,
+.page-header h1 a:active {
+	color: #222;
 	font-size: 36pt;
 	text-decoration: none;
+	letter-spacing: 1px;
+	font-weight: 700;
+	text-shadow: 0 1px 0 #fff, 0 2px 8px rgba(255,215,0,0.12);
 }
 
 .content {
@@ -84,7 +125,10 @@ body {
 }
 
 /* 컨테이너 화면 전체 사용 (기존 동작 유지) */
-.content.container { width: 100% !important; }
+.content.container {
+	width: 100% !important;
+	padding-top: 130px;
+}
 
 /* Masonry.js 기반 촘촘 레이아웃: 수평 순서를 최대한 유지 (horizontalOrder) */
 .masonry-grid {
