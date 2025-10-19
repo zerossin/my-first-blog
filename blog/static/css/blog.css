@@ -4,7 +4,7 @@
  }
 
  body {
- padding-left: 15px;
+ padding-left: 0;
  }
 
  .page-header {
@@ -18,7 +18,7 @@
  text-decoration: none;
  }
  .content {
- margin-left: 40px;
+  margin-left: 0; /* let Bootstrap container handle centering */
  }
  h1, h2, h3, h4 {
  font-family: 'Lobster', cursive;
@@ -46,4 +46,21 @@
  }
  .intruder-image-list{
  object-fit: cover;
+ display: block;
+ width: 100%;
+ height: auto;
+ max-width: 100%;
  }
+
+/* Subtle card border for each post */
+.post {
+	margin-bottom: 70px; /* keep existing spacing */
+	border: 1px solid #e9e9e9;
+	border-radius: 8px;
+	padding: 16px;
+	background: #fff;
+	overflow: hidden; /* keep images inside */
+}
+
+/* 컨테이너 화면 전체 사용 */
+.content.container { width: 100% !important; }
