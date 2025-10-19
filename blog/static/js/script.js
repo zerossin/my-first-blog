@@ -24,15 +24,21 @@
 				pillOptions.forEach(function(o){ o.classList.remove('pill-active'); });
 				opt.classList.add('pill-active');
 
-				// Masonry 아이템 정렬
+				// Masonry 아이템 정렬: 발행일 타임스탬프, 동률 시 PK로 안정 정렬
 				var sortType = opt.getAttribute('data-sort');
 				var items = Array.from(grid.querySelectorAll('.masonry-grid-item'));
 				items.sort(function(a, b) {
-					var aIdx = parseInt(a.getAttribute('data-idx'), 10);
-					var bIdx = parseInt(b.getAttribute('data-idx'), 10);
-					return sortType === 'asc' ? aIdx - bIdx : bIdx - aIdx;
+					var ap = parseInt(a.getAttribute('data-published') || '0', 10);
+					var bp = parseInt(b.getAttribute('data-published') || '0', 10);
+					if (ap === bp) {
+						var apk = parseInt(a.getAttribute('data-pk') || '0', 10);
+						var bpk = parseInt(b.getAttribute('data-pk') || '0', 10);
+						return sortType === 'asc' ? apk - bpk : bpk - apk;
+					}
+					return sortType === 'asc' ? ap - bp : bp - ap;
 				});
 				items.forEach(function(item){ grid.appendChild(item); });
+				msnry.reloadItems();
 				msnry.layout();
 			});
 		});
